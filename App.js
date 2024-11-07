@@ -1,125 +1,107 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import { View, TextInput, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.heading}>Welcome Back</Text>
+    <View style={styles.container}>
+      <Image
+        source={require('./assets/icon.png')}
+        style={styles.logo}
+      />
+      <Text style={styles.brandName}>BetterStreets</Text>
 
-        <View style={styles.form}>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your email"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your password"
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-          />
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
 
-          <TouchableOpacity style={styles.loginButton}>
-            <Text style={styles.buttonText}>Log In</Text>
-          </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonLogin}>
+        <Text style={styles.buttonText}>Log In</Text>
+      </TouchableOpacity>
 
-          <View style={styles.footer}>
-            <Text style={styles.footerText}>Don't have an account?</Text>
-            <TouchableOpacity style={styles.registerButton}>
-              <Text style={styles.buttonText}>Sign Up</Text>
-            </TouchableOpacity>
-          </View>
+      <Text style={styles.dontHaveAccount}>Don't have an account yet?</Text>
 
-          <TouchableOpacity>
-            <Text style={styles.forgotPassword}>Forgot Password?</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+      <TouchableOpacity style={styles.buttonRegister}>
+        <Text style={styles.buttonText}>Register Here</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity>
+        <Text style={styles.footerText}>Forgot Password?</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: '#f4f6f9',
-  },
   container: {
-    flexGrow: 1,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 40,
+    backgroundColor: '#f4f4f4',
+    padding: 20,
   },
-  heading: {
-    fontSize: 32,
-    fontWeight: '600',
-    color: '#333',
+  logo: {
+    width: 100,
+    height: 100,
+    marginBottom: 20,
+  },
+  brandName: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#1e90ff',
     marginBottom: 40,
-  },
-  form: {
-    width: '100%',
-    paddingHorizontal: 20,
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    paddingVertical: 30,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 5,
   },
   input: {
     width: '100%',
-    height: 50,
-    borderColor: '#ddd',
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingLeft: 15,
+    padding: 10,
     marginBottom: 15,
-    fontSize: 16,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    backgroundColor: '#fff',
   },
-  loginButton: {
-    backgroundColor: '#3498db',
-    paddingVertical: 15,
-    borderRadius: 8,
-    marginTop: 10,
-    marginBottom: 20,
+  buttonLogin: {
+    width: '100%',
+    padding: 15,
+    backgroundColor: '#1e90ff',
     alignItems: 'center',
+    borderRadius: 5,
+  },
+  buttonRegister: {
+    width: '100%',
+    padding: 15,
+    backgroundColor: '#ff6347',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginTop: 10,
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+  dontHaveAccount: {
+    fontSize: 16,
+    color: '#555',
     marginTop: 10,
   },
   footerText: {
-    fontSize: 14,
-    color: '#666',
-    marginRight: 5,
-  },
-  registerButton: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
-    backgroundColor: '#2ecc71',
-    borderRadius: 8,
-  },
-  forgotPassword: {
-    color: '#3498db',
+    color: '#1e90ff',
     textDecorationLine: 'underline',
-    fontSize: 14,
-    marginTop: 10,
-    textAlign: 'center',
+    fontSize: 16,
+    marginVertical: 5,
   },
 });
 
