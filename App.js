@@ -8,7 +8,7 @@ const LoginPage = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('./assets/icon.png')}
+        source={require('./assets/icon.png')} 
         style={styles.logo}
       />
       <Text style={styles.brandName}>BetterStreets</Text>
